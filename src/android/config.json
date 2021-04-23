@@ -1,0 +1,24 @@
+{
+  "fadUser": "<contact_sales>",
+  "fadPassword": "<contact_sales>",
+  "modules": {
+    "fad": {
+      "version": "0.3.0"
+    },
+    "videoplayer": {
+      "version": "0.0.3"
+    },
+    "androidPdfViewer": {
+      "version": "0.0.1"
+    },
+    "pdfiumAndroid": {
+      "version": "1.9.0"
+    },
+    "signaturepad": {
+      "version": "0.0.4"
+    },
+    "firebaseCore": {
+      "version": "16.0.9"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-naat-legacy-plugin" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>LegacyPlugin</name>
+	<js-module name="LegacyPlugin" src="www/LegacyPlugin.js">
+		<runs/>
+		<clobbers target="LegacyPlugin" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="LegacyPlugin">
+				<param name="android-package" value="com.naat.legacy.LegacyPlugin" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml"></config-file>
+		<source-file src="src/android/com/naat/legacy/LegacyPlugin.java" target-dir="src/android/com/naat/legacy/" />
+		<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+	</platform>
+</plugin>

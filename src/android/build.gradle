@@ -1,0 +1,119 @@
+/* Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.
+*/
+
+
+def configJson = {};
+try {
+  // from current module
+  configJson = new groovy.json.JsonSlurper().parseText(file('../../../plugins/cordova-plugin-fad-signo/src/android/config.json').text)
+} catch(all) {
+  // from main app
+  configJson = new groovy.json.JsonSlurper().parseText(file('../../../node_modules/cordova-plugin-fad-signo/src/android/config.json').text)
+}
+
+repositories {
+    google()
+    jcenter()
+    maven {
+        credentials {
+            username configJson.fadUser
+            password configJson.fadPassword
+        }
+        url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
+    }
+    maven {
+        url "https://s3.amazonaws.com/repo.commonsware.com"
+    }
+    maven {
+        url 'http://raw.github.com/saki4510t/libcommon/master/repository/'
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+
+    // main dependencies
+    implementation(group: 'com.na_at', name: 'videoplayer', version: configJson.modules.videoplayer.version, ext: 'aar')
+    implementation(group: 'com.na_at.fad_viewer', name: 'android-pdf-viewer', version: configJson.modules.androidPdfViewer.version, ext: 'aar')
+    implementation(group: 'com.na_at.fad', name: 'sdk', version: configJson.modules.fad.version , ext: 'aar')
+    //implementation(group: 'com.github.barteksc', name: 'android-pdf-viewer', version: configJson.modules.androidPdfViewer.version, ext: 'aar')
+    implementation(group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2.1', ext: 'aar')
+    implementation(group: 'com.github.barteksc', name: 'pdfium-android', version: configJson.modules.pdfiumAndroid.version)
+    implementation(group: 'com.na_at.sdk', name: 'signaturepad', version: configJson.modules.signaturepad.version, ext: 'aar')
+
+    //zxing
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.3.0'
+
+    //opencv
+    implementation 'com.github.bumptech.glide:glide:4.0.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+
+    //other
+    implementation ('com.serenegiant:common:1.1.9') {
+        exclude module: 'support-v4'
+    }
+
+    //reciclerview
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //gif view
+    implementation 'com.android.support:gridlayout-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    def firebaseCore = configJson.modules.firebaseCore.version
+
+    implementation 'com.arthenica:mobile-ffmpeg-full:4.3.1.LTS'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.7@aar'
+    implementation 'com.itextpdf:itextg:5.5.9'
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'org.simpleframework:simple-xml:2.7.1'
+
+    //RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.13"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+    implementation 'com.scottyab:rootbeer-lib:0.0.6'
+    implementation 'com.madgag.spongycastle:core:1.54.0.0'
+    implementation 'com.madgag.spongycastle:prov:1.54.0.0'
+    implementation 'com.madgag.spongycastle:pkix:1.54.0.0'
+    implementation 'com.madgag.spongycastle:pg:1.54.0.0'
+    implementation 'com.google.firebase:firebase-crash:16.2.1'
+    implementation "com.google.firebase:firebase-core:$firebaseCore"
+    implementation 'com.google.firebase:firebase-messaging:17.3.3'
+    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.0'
+    implementation 'com.google.android.gms:play-services-vision:17.0.2'
+
+    implementation 'org.apache.httpcomponents:httpcore:4.4.13'
+
+    implementation 'us.feras.mdv:markdownview:1.1.0'
+    implementation 'org.piwik.sdk:piwik-sdk:0.0.4'
+    testImplementation 'junit:junit:4.12'
+}
