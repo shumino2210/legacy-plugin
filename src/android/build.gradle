@@ -19,11 +19,11 @@
 
 def configJson = {};
 try {
-  // from current module
-  configJson = new groovy.json.JsonSlurper().parseText(file('../../../plugins/cordova-plugin-fad-signo/src/android/config.json').text)
+    // from current module
+    configJson = new groovy.json.JsonSlurper().parseText(file('../../../plugins/com-naat-legacy-plugin/src/android/config.json').text)
 } catch(all) {
-  // from main app
-  configJson = new groovy.json.JsonSlurper().parseText(file('../../../node_modules/cordova-plugin-fad-signo/src/android/config.json').text)
+    // from main app
+    configJson = new groovy.json.JsonSlurper().parseText(file('../../../node_modules/com-naat-legacy-plugin/src/android/config.json').text)
 }
 
 repositories {
@@ -50,9 +50,8 @@ dependencies {
     // main dependencies
     implementation(group: 'com.na_at', name: 'videoplayer', version: configJson.modules.videoplayer.version, ext: 'aar')
     implementation(group: 'com.na_at.fad_viewer', name: 'android-pdf-viewer', version: configJson.modules.androidPdfViewer.version, ext: 'aar')
-    implementation(group: 'com.na_at.fad', name: 'sdk', version: configJson.modules.fad.version , ext: 'aar')
-    //implementation(group: 'com.github.barteksc', name: 'android-pdf-viewer', version: configJson.modules.androidPdfViewer.version, ext: 'aar')
-    implementation(group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2.1', ext: 'aar')
+    implementation(group: 'com.naat.legacy', name: 'sdk-sign', version: configJson.modules.fad.version , ext: 'aar')
+    implementation(group: 'com.na_at.opencv', name: 'openCVLibrary320', version: '3.2.1', ext: 'aar')
     implementation(group: 'com.github.barteksc', name: 'pdfium-android', version: configJson.modules.pdfiumAndroid.version)
     implementation(group: 'com.na_at.sdk', name: 'signaturepad', version: configJson.modules.signaturepad.version, ext: 'aar')
 

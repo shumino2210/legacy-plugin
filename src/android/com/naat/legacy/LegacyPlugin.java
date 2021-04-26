@@ -1,4 +1,4 @@
-package com.naat.legacy.plugin;
+package com.naat.legacy.plugin.wrapper;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -12,21 +12,22 @@ import org.json.JSONObject;
  */
 public class LegacyPlugin extends CordovaPlugin {
 
+    private int REQUEST_CODE = 9552;
+    private CallbackContext callbackContext;
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
+        this.callbackContext = callbackContext;
+        if (action.equals("initProcess")) {
+            this.initProcess(args.getString(0), callbackContext);
             return true;
         }
         return false;
     }
 
-    private void coolMethod(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
+    private void initProcess(String string, CallbackContext callbackContext) {
+
     }
+
+
 }
