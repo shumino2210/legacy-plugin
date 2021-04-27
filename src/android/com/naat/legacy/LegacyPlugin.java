@@ -28,6 +28,7 @@ public class LegacyPlugin extends CordovaPlugin {
             return true;
         } else if (action.equals("getIdRequisitionFAD")) {
             this.getIdReqMethod(callbackContext);
+            return true;
         }
         return false;
     }
@@ -95,9 +96,9 @@ public class LegacyPlugin extends CordovaPlugin {
         }
 
 
-        fadConstants.setUrlGetKeys((fadLegacyConfigWrapper.getUrlGetKeys().isEmpty())?"cub/getKeys" : fadLegacyConfigWrapper.getUrlGetKeys());
+        fadConstants.setUrlGetKeys((fadLegacyConfigWrapper.getUrlGetKeys() == null || fadLegacyConfigWrapper.getUrlGetKeys().isEmpty())? "cub/getKeys" : fadLegacyConfigWrapper.getUrlGetKeys());
 
-        cordova.getActivity().startActivityForResult(new Intent(cordova.getActivity(), FADModuleSignActivity.class), REQUEST_CODE);
+        cordova.startActivityForResult(this, new Intent(cordova.getActivity(), FADModuleSignActivity.class), REQUEST_CODE);
     }
 
 
