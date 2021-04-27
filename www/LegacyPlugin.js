@@ -1,5 +1,9 @@
 var exec = require('cordova/exec');
 
-exports.initProcess = function (arg0, success, error) {
-    exec(success, error, 'LegacyPlugin', 'initProcess', [arg0]);
+exports.invokeFAD = function (arg0, success, error) {
+    exec(success, error, 'LegacyPlugin', 'invokeFAD', [arg0]);
+};
+
+exports.getIdRequisitionFAD = function (arg0, success, error) {
+    exec(success, error, 'LegacyPlugin', 'getIdRequisitionFAD', [arg0]);
 };
