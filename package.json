@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Plugin for maintance for old sdks",
   "cordova": {
-    "id": "com-naat-legacy-plugin",
+    "id": "cordova-plugin-fad",
     "platforms": [
       "android"
     ]
