@@ -1,5 +1,5 @@
 {
-  "name": "com-naat-legacy-plugin",
+  "name": "cordova-plugin-fad",
   "version": "1.0.0",
   "description": "Plugin for maintance for old sdks",
   "cordova": {
