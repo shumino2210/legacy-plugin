@@ -20,10 +20,10 @@
 def configJson = {};
 try {
     // from current module
-    configJson = new groovy.json.JsonSlurper().parseText(file('../../../plugins/com-naat-legacy-plugin/src/android/config.json').text)
+    configJson = new groovy.json.JsonSlurper().parseText(file('../../../plugins/cordova-plugin-fad/src/android/config.json').text)
 } catch(all) {
     // from main app
-    configJson = new groovy.json.JsonSlurper().parseText(file('../../../node_modules/com-naat-legacy-plugin/src/android/config.json').text)
+    configJson = new groovy.json.JsonSlurper().parseText(file('../../../node_modules/cordova-plugin-fad/src/android/config.json').text)
 }
 
 repositories {
@@ -86,7 +86,7 @@ dependencies {
     implementation 'com.arthenica:mobile-ffmpeg-full:4.3.1.LTS'
     implementation 'net.zetetic:android-database-sqlcipher:3.5.7@aar'
     implementation 'com.itextpdf:itextg:5.5.9'
-   //Retrofit
+    //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
